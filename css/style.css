@@ -32,6 +32,25 @@ html {
   @media only screen and (min-width: 112.5em) {
     html {
       font-size: 65%; } }
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff; /* Add your desired background color */
+  z-index: 1000; /* Set a higher z-index to make sure it's above other elements */
+}
+
+/* Add some padding to the body to account for the fixed header */
+body {
+  padding-top: 80px; /* Adjust the value based on your header height */
+}
+
+/* Adjust the styles for the header links if needed */
+.header__links {
+  /* Add your desired styles */
+}
+
 
 body {
   box-sizing: border-box;
