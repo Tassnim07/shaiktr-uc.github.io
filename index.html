@@ -15,31 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap"
       rel="stylesheet"
     />
-	  
-<style>
-        .email-widget {
-            font-size: 50px;
-            margin-top: 20px;
-            margin-left: 20px;
-            cursor: pointer;
-        }
-	 #toggle-message {
-      font-size: 20px; /* Increased size for the Toggle message button */
-      cursor: pointer;
-    }
-	body {
-  padding: 25px;
-  background-color: white;
-  color: black;
-  font-size: 25px;
-}
 
-.toggleDarkMode {
-  background-color: black;
-  color: white;
-
-    }
-  </style>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q4590YFJYF"></script>
 <script>
@@ -210,7 +186,9 @@
 		onclick="showhideEmail()">Show my email</div>
 		<script src="email.js"></script>
              </div>
-          
+          <div 
+	   id="joke-container">
+	   </div>
           </div>
           <div class="about__content-skills">
             <h3 class="about__content-title">My Skills</h3>
@@ -396,9 +374,7 @@
 	   <div id="toggle-message" onclick="toggleMessage()">Toggle Message</div>
     <p id="widget-message" style="display: none;">This is a hidden message. Click the button to toggle visibility.</p>
 
-    <!-- Theme Toggle Widget -->
-    <div id="theme-toggle" onclick="toggleTheme()">Toggle Theme</div>
-    <script>
+
     
 	    function toggleMessage() {
         var message = document.getElementById('widget-message');
@@ -409,17 +385,6 @@
         }
       }
 
-	    <button onclick="myFunction()">Toggle dark mode</button>
-
-
-function toggleTheme() {
-   var element = document.body;
-   element.classList.toggle("dark-mode");
-}
-	    function toggleDarkMode() {
-  var element = document.body;
-  element.classList.toggle("dark-mode");
-}
 </script>
 <!-- Digital Clock -->
 	  <div id="digital-clock"></div>
@@ -443,49 +408,40 @@ function toggleTheme() {
                 drawNumbers(ctx, radius);
                 drawTime(ctx, radius);
             }
-			function setCookie(name, value, days) {
-    const expires = new Date();
-    expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
-    document.cookie = ${name}=${value};expires=${expires.toUTCString()};path=/;;
-  }
-
-  // Function to get the value of a cookie by name
-  function getCookie(name) {
-    const keyValue = document.cookie.match((^|;) ?${name}=([^;]*)(;|$));
-    return keyValue ? keyValue[2] : null;
-  }
-
-  // Function to display a welcome message based on cookie
-  function displayWelcomeMessage() {
-    const lastVisit = getCookie('lastVisit');
-
-    if (!lastVisit) {
-      // First-time visit
-      const currentDate = new Date();
-      const day = currentDate.getDate();
-      const month = currentDate.getMonth() + 1; // Months are zero-based
-      const year = currentDate.getFullYear();
-      const hours = currentDate.getHours();
-      const minutes = currentDate.getMinutes();
-      const seconds = currentDate.getSeconds();
-      const formattedDate = ${day}/${month}/${year} ${hours}:${minutes}:${seconds};
-      alert('Welcome to my homepage!');
-      setCookie('lastVisit', formattedDate, 365); // Set cookie to expire in 365 days
-    } else {
-      // Returning visit
-      alert(Welcome back! Your last visit was ${lastVisit});
+</script>
+		<script>
+  // Function to fetch a new joke from the API
+  async function fetchJoke() {
+    try {
+      const response = await fetch('https://v2.jokeapi.dev/joke/Any');
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching joke:', error);
     }
   }
 
-  // Call the function on page load
-  $(document).ready(function() {
-    displayWelcomeMessage();
-  });
+  // Function to update the joke content in the HTML
+  async function updateJoke() {
+    const jokeContainer = document.getElementById('joke-container');
+    const jokeData = await fetchJoke();
+
+    if (jokeData && jokeData.joke) {
+      jokeContainer.innerHTML = `<p>${jokeData.joke}</p>`;
+    } else if (jokeData && jokeData.setup && jokeData.delivery) {
+      jokeContainer.innerHTML = `<p>${jokeData.setup}</p><p>${jokeData.delivery}</p>`;
+    } else {
+      jokeContainer.innerHTML = '<p>Failed to fetch joke. Please try again later.</p>';
+    }
+  }
+
+  // Initial update when the page loads
+  updateJoke();
+
+  // Update the joke every 1 minute (60000 milliseconds)
+  setInterval(updateJoke, 60000);
 </script>
-	  
-    
-		
-	</canvas>
+
 	  
   </body>
 </html>
