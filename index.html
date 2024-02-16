@@ -385,22 +385,23 @@
 		<script type="text/javaScript">function displayTime(){
 			document.getElementById('digital-clock').innerHTML="Current time:"+new Date();
 		}
-		setInterval(displayTime,500);
-		var canvas=document.getElementById("analog-clock");
-		var ctx = canvas.getContext("2d");
-		var radius = canvas.height / 2;
-		ctx.translate(radius,radius);
-		radius=radius * 0.90
-		setInterval(drawClock,1000);
-		function drawClock() {
+		 setInterval(displayTime, 500);
 
-		    drawFace(ctx, radius);
-			drawNumbers(ctx, radius);
-			drawTime(ctx,radius);
-			}
+            var canvas = document.getElementById("analog-clock");
+            var ctx = canvas.getContext("2d");
+            var radius = canvas.height / 2;
+            ctx.translate(radius, radius);
+            radius = radius * 0.90
+            setInterval(drawClock, 1000);
 
-		function fetchWeather() {
-                fetch('https://api.openweathermap.org/data/2.5/weather?q=Cincinnati&appid=3a6b44dbe65671f04b1096d5c60da887')
+            function drawClock() {
+                drawFace(ctx, radius);
+                drawNumbers(ctx, radius);
+                drawTime(ctx, radius);
+            }
+
+            function fetchWeather() {
+                fetch('https://api.openweathermap.org/data/2.5/weather?q=Cincinnati&appid=YourAPIKey')
                     .then(response => response.json())
                     .then(data => {
                         const weatherContainer = document.getElementById('weather');
