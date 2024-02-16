@@ -395,7 +395,7 @@
     <script>
       function toggleTheme() {
         var body = document.body;
-        body.classList.toggle('light-theme');
+        body.classList.toggle('dark-theme');
       }
 	    function toggleMessage() {
         var message = document.getElementById('widget-message');
@@ -405,24 +405,7 @@
           message.style.display = 'none';
         }
       }
-	    <div id="greeting-widget">
-      <label for="name-input">Enter your name:</label>
-      <input type="text" id="name-input" placeholder="Your Name">
-      <button onclick="displayGreeting()">Display Greeting</button>
-      <p id="greeting-message"></p>
-    </div>
-    <script>
-      function displayGreeting() {
-        var nameInput = document.getElementById('name-input');
-        var greetingMessage = document.getElementById('greeting-message');
-
-        var name = nameInput.value;
-        if (name.trim() !== '') {
-          greetingMessage.innerText = 'Hello, ' + name + '! Welcome to the website!';
-        } else {
-          greetingMessage.innerText = 'Please enter your name.';
-        }
-      }
+	  
     </script>
 <!-- Digital Clock -->
 	  <div id="digital-clock"></div>
