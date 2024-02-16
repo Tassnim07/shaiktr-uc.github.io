@@ -203,6 +203,10 @@
 		<script src="email.js"></script>
 	  </div>
 	</div>
+	      <div id="unsplash-image-container">
+	<button id="change-image-btn">Change Image</button>
+  <img id="unsplash-image" alt="Unsplash Image">
+</div>
           <div class="about__content-skills">
             <h3 class="about__content-title">My Skills</h3>
             <div class="skills">
@@ -432,6 +436,31 @@
     </footer>
     <script src="./index.js"></script>
 </script>
+
+	<script>
+  // Function to fetch a random image from Unsplash API
+  function fetchRandomUnsplashImage() {
+    // Replace 'YOUR_ACCESS_KEY' with your Unsplash API access key
+    const unsplashAccessKey = 'g-OtiyG8gnXFufp0_fH_ZzmGLDqVdd0eaYQcPWUGpUg';
+
+    fetch(`https://api.unsplash.com/photos/random?client_id=${unsplashAccessKey}`)
+      .then(response => response.json())
+      .then(data => {
+        // Update image source with the fetched random image
+        const unsplashImage = document.getElementById('unsplash-image');
+        unsplashImage.src = data.urls.regular;
+        unsplashImage.alt = data.alt_description;
+      })
+      .catch(error => console.error('Error fetching random Unsplash image:', error));
+  }
+
+  // Fetch a random Unsplash image when the page loads
+  fetchRandomUnsplashImage();
+
+  // Function to change image on button click
+  document.getElementById('change-image-btn').addEventListener('click', fetchRandomUnsplashImage);
+</script>
+ 
 
 <!-- Digital Clock -->
 	  <div id="digital-clock"></div>
