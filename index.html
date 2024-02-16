@@ -27,9 +27,17 @@
       font-size: 20px; /* Increased size for the Toggle message button */
       cursor: pointer;
     }
-	#theme-toggle {
-      font-size: 20px;
-      cursor: pointer;
+	body {
+  padding: 25px;
+  background-color: white;
+  color: black;
+  font-size: 25px;
+}
+
+.dark-mode {
+  background-color: black;
+  color: white;
+
     }
   </style>
     <!-- Google tag (gtag.js) -->
@@ -117,9 +125,7 @@
             Welcome to my portfolio, a testament to my unwavering passion for Technology. Join me on a voyage through projects that showcase my commitment to excellence and love for what I do.
           </p>
         </div>
-	      <!-- Joke Display -->
-	<div id="joke-container" class="container">
-  		<div id="joke" class="text-center"></div>
+	    
 	</div>
         <div class="home-hero__cta">
           <a href="./#projects" class="btn btn--bg">Projects</a>
@@ -393,10 +399,7 @@
     <!-- Theme Toggle Widget -->
     <div id="theme-toggle" onclick="toggleTheme()">Toggle Theme</div>
     <script>
-      function toggleTheme() {
-        var body = document.body;
-        body.classList.toggle('dark-theme');
-      }
+    
 	    function toggleMessage() {
         var message = document.getElementById('widget-message');
         if (message.style.display === 'none') {
@@ -405,8 +408,15 @@
           message.style.display = 'none';
         }
       }
-	  
-    </script>
+
+	    <button onclick="myFunction()">Toggle dark mode</button>
+
+
+function myFunction() {
+   var element = document.body;
+   element.classList.toggle("dark-mode");
+}
+</script>
 <!-- Digital Clock -->
 	  <div id="digital-clock"></div>
 	<canvas id="analog-clock"width="150" height="150" style="background-color:#999">
@@ -435,12 +445,7 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
-      function fetchProgrammingJoke() {
-        $.get("https://v2.jokeapi.dev/joke/Programming?type=single", function(result) {
-          console.log("From jokeAPI: " + JSON.stringify(result));
-          $("#response").html("A programming joke of the day: " + result.joke);
-        });
-      }
+    
 		</script>
 	</canvas>
 	  
