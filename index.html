@@ -443,9 +443,48 @@ function toggleTheme() {
                 drawNumbers(ctx, radius);
                 drawTime(ctx, radius);
             }
+			function setCookie(name, value, days) {
+    const expires = new Date();
+    expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+    document.cookie = ${name}=${value};expires=${expires.toUTCString()};path=/;;
+  }
+
+  // Function to get the value of a cookie by name
+  function getCookie(name) {
+    const keyValue = document.cookie.match((^|;) ?${name}=([^;]*)(;|$));
+    return keyValue ? keyValue[2] : null;
+  }
+
+  // Function to display a welcome message based on cookie
+  function displayWelcomeMessage() {
+    const lastVisit = getCookie('lastVisit');
+
+    if (!lastVisit) {
+      // First-time visit
+      const currentDate = new Date();
+      const day = currentDate.getDate();
+      const month = currentDate.getMonth() + 1; // Months are zero-based
+      const year = currentDate.getFullYear();
+      const hours = currentDate.getHours();
+      const minutes = currentDate.getMinutes();
+      const seconds = currentDate.getSeconds();
+      const formattedDate = ${day}/${month}/${year} ${hours}:${minutes}:${seconds};
+      alert('Welcome to my homepage!');
+      setCookie('lastVisit', formattedDate, 365); // Set cookie to expire in 365 days
+    } else {
+      // Returning visit
+      alert(Welcome back! Your last visit was ${lastVisit});
+    }
+  }
+
+  // Call the function on page load
+  $(document).ready(function() {
+    displayWelcomeMessage();
+  });
+</script>
 	  
     
-		</script>
+		
 	</canvas>
 	  
   </body>
