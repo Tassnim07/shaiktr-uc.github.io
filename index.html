@@ -333,6 +333,53 @@
         </div>
       </div>
     </section>
+
+	  <script>
+    // Function to set a cookie with a specified name, value, and expiration date
+    function setCookie(name, value, days) {
+      var expires = '';
+      if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = '; expires=' + date.toUTCString();
+      }
+      document.cookie = name + '=' + value + expires + '; path=/';
+    }
+
+    // Function to get the value of a cookie by name
+    function getCookie(name) {
+      var nameEQ = name + '=';
+      var cookies = document.cookie.split(';');
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        while (cookie.charAt(0) === ' ') {
+          cookie = cookie.substring(1, cookie.length);
+        }
+        if (cookie.indexOf(nameEQ) === 0) {
+          return cookie.substring(nameEQ.length, cookie.length);
+        }
+      }
+      return null;
+    }
+
+    // Function to check if it's the first visit or a returning visitor
+    function checkVisit() {
+      var lastVisit = getCookie('lastVisit');
+      if (lastVisit === null) {
+        // First-time visit
+        alert('Welcome to my homepage!');
+        setCookie('lastVisit', new Date(), 365); // Set the cookie to expire in 365 days
+      } else {
+        // Returning visitor
+        alert('Welcome back! Your last visit was ' + lastVisit);
+        setCookie('lastVisit', new Date(), 365); // Update the cookie on each visit
+      }
+    }
+
+    // Call the checkVisit function when the page is loaded
+    window.onload = checkVisit;
+  </script>
+	  
     <footer class="main-footer">
       <div class="main-container">
         <div class="main-footer__upper">
