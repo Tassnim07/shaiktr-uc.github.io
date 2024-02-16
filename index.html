@@ -203,10 +203,6 @@
 		<script src="email.js"></script>
 	  </div>
 	</div>
-	      
-<!-- Place this where you want to display the XKCD comic -->
-<div id="xkcdComicContainer">
-</div>
           <div class="about__content-skills">
             <h3 class="about__content-title">My Skills</h3>
             <div class="skills">
@@ -461,34 +457,6 @@
             }
 </script>
 </canvas>
-
-<!-- Script for XKCD Comics API integration -->
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // Fetch a random XKCD comic
-    fetch('https://xkcd.com/info.0.json')
-      .then(response => response.json())
-      .then(data => {
-        // Display the comic image
-        const comicImg = document.createElement('img');
-        comicImg.src = data.img;
-        comicImg.alt = data.alt;
-
-        // Display the comic title
-        const comicTitle = document.createElement('h2');
-        comicTitle.textContent = data.title;
-
-        // Append the comic image and title to a container div
-        const comicContainer = document.getElementById('xkcdComicContainer');
-        comicContainer.appendChild(comicImg);
-        comicContainer.appendChild(comicTitle);
-      })
-      .catch(error => console.error('Error fetching XKCD comic:', error));
-  });
-</script>
-
-<!-- Existing HTML code below this line -->
-
 		<script>
   // Function to fetch a new joke from the API
   async function fetchJoke() {
