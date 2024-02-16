@@ -16,13 +16,18 @@
       rel="stylesheet"
     />
 	  
-  <style>
-    .email-button {
-      font-size: 18px;
-      margin-top: 10px;
-      margin-left: 10px;
-      cursor: pointer;
-    }
+<style>
+        .email-widget {
+            font-size: 24px;
+            margin-top: 10px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+	.weather-container {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+	
   </style>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q4590YFJYF"></script>
@@ -187,8 +192,8 @@
               </p>
             </div>
              <a href="./Tassnim_Resume.pdf" download="Tassnim_Resume.pdf" class="btn btn--med btn--theme dynamicBgClr">Resume</a>
-              <div id="email" onclick="showhideEmail()">Show my email</div>
-        <script src="email.js"></script>
+             <div class="email-widget" onclick="showhideEmail()">Show my email</div>
+    <script src="email.js"></script>
             >
           </div>
           <div class="about__content-skills">
@@ -277,7 +282,7 @@
         <h2 class="heading heading-sec heading-sec__mb-med">
           <span class="heading-sec_main heading-sec_main--lt">Contact</span>
           <span class="heading-sec_sub heading-sec_sub--lt">
-            If you appreciate my work and want to give me any remarks and suggestions, feel free to drop them here. 
+            <strong>If you appreciate my work and want to give me any remarks and suggestions, feel free to drop them here.</strong>
           </span>
         </h2>
         <div class="contact__form-container">
@@ -375,7 +380,7 @@
 <!-- Digital Clock -->
 	  <div id="digital-clock"></div>
 	<canvas id="analog-clock"width="150" height="150" style="background-color:#999">
-		 <div id="weather" class="weather-container">Fetching weather...</div
+		 <div id="weather" class="weather-container">Fetching weather...</div>
 		<script src="https://waph-uc.github.io/clock.js"></script>
 		<script type="text/javaScript">function displayTime(){
 			document.getElementById('digital-clock').innerHTML="Current time:"+new Date();
@@ -394,27 +399,27 @@
 			drawTime(ctx,radius);
 			}
 
-			function fetchWeather() {
-      fetch('https://api.openweathermap.org/data/2.5/weather?q=Cincinnati&appid=3a6b44dbe65671f04b1096d5c60da887')
-        .then(response => response.json())
-        .then(data => {
-          const weatherContainer = document.getElementById('weather');
-          const temperature = Math.round(data.main.temp - 273.15); // Convert Kelvin to Celsius
-          const weatherDescription = data.weather[0].description;
-          const cityName = data.name;
+		function fetchWeather() {
+                fetch('https://api.openweathermap.org/data/2.5/weather?q=Cincinnati&appid=3a6b44dbe65671f04b1096d5c60da887')
+                    .then(response => response.json())
+                    .then(data => {
+                        const weatherContainer = document.getElementById('weather');
+                        const temperature = Math.round(data.main.temp - 273.15); // Convert Kelvin to Celsius
+                        const weatherDescription = data.weather[0].description;
+                        const cityName = data.name;
 
-          weatherContainer.innerHTML = `Current weather in ${cityName}: ${temperature}°C, ${weatherDescription}`;
-        })
-        .catch(error => {
-          console.error('Error fetching weather:', error);
-        });
-    }
+                        weatherContainer.innerHTML = `Current weather in ${cityName}: ${temperature}°C, ${weatherDescription}`;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching weather:', error);
+                    });
+            }
 
-    // Initial fetch
-    fetchWeather();
+            // Initial fetch
+            fetchWeather();
 
-    // Fetch weather every 10 minutes
-    setInterval(fetchWeather, 600000);
+            // Fetch weather every 10 minutes
+            setInterval(fetchWeather, 600000);
 		</script>
   </body>
 </html>
