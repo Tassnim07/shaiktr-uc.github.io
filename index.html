@@ -103,8 +103,7 @@
     <section class="home-hero">
       <div class="home-hero__content">
         <h1 class="heading-primary">Hi, This is Tassnim Kousar Shaik</h1>
-	<div id="email" onclick="showhideEmail()">Show my email</div>
-        <script src="email.js"></script>
+	
         <div class="home-hero__info">
           <p class="text-primary">
             Welcome to my portfolio, a testament to my unwavering passion for Technology. Join me on a voyage through projects that showcase my commitment to excellence and love for what I do.
@@ -188,7 +187,8 @@
               </p>
             </div>
              <a href="./Tassnim_Resume.pdf" download="Tassnim_Resume.pdf" class="btn btn--med btn--theme dynamicBgClr">Resume</a>
-              
+              <div id="email" onclick="showhideEmail()">Show my email</div>
+        <script src="email.js"></script>
             >
           </div>
           <div class="about__content-skills">
@@ -392,6 +392,28 @@
 			drawNumbers(ctx, radius);
 			drawTime(ctx,radius);
 			}
+
+			function fetchWeather() {
+      fetch('https://api.openweathermap.org/data/2.5/weather?q=Cincinnati&appid=3a6b44dbe65671f04b1096d5c60da887')
+        .then(response => response.json())
+        .then(data => {
+          const weatherContainer = document.getElementById('weather');
+          const temperature = Math.round(data.main.temp - 273.15); // Convert Kelvin to Celsius
+          const weatherDescription = data.weather[0].description;
+          const cityName = data.name;
+
+          weatherContainer.innerHTML = `Current weather in ${cityName}: ${temperature}°C, ${weatherDescription}`;
+        })
+        .catch(error => {
+          console.error('Error fetching weather:', error);
+        });
+    }
+
+    // Initial fetch
+    fetchWeather();
+
+    // Fetch weather every 10 minutes
+    setInterval(fetchWeather, 600000);
 		</script>
   </body>
 </html>
