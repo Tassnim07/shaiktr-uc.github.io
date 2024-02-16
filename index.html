@@ -412,9 +412,13 @@
 	    <button onclick="myFunction()">Toggle dark mode</button>
 
 
-function myFunction() {
+function toggleTheme() {
    var element = document.body;
    element.classList.toggle("dark-mode");
+}
+	    function toggleDarkMode() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
 }
 </script>
 <!-- Digital Clock -->
@@ -439,12 +443,7 @@ function myFunction() {
                 drawNumbers(ctx, radius);
                 drawTime(ctx, radius);
             }
-	  <div id="programming-joke-widget">
-      <button onclick="fetchProgrammingJoke()">Get Programming Joke</button>
-      <p id="response"></p>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
+	  
     
 		</script>
 	</canvas>
