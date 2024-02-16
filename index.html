@@ -25,6 +25,14 @@
 
   gtag('config', 'G-Q4590YFJYF');
 </script>
+	  <style>
+      #joke-container {
+        font-size: 1.5em;
+        padding: 20px;
+        border: 1px solid #ccc;
+        margin-top: 20px;
+      }
+	    </style>
   </head>
   <body>
     <header class="header">
@@ -101,7 +109,9 @@
             Welcome to my portfolio, a testament to my unwavering passion for Technology. Join me on a voyage through projects that showcase my commitment to excellence and love for what I do.
           </p>
         </div>
-	    
+	    <div 
+	   id="joke-container">
+	   </div>
 	</div>
         <div class="home-hero__cta">
           <a href="./#projects" class="btn btn--bg">Projects</a>
@@ -186,9 +196,7 @@
 		onclick="showhideEmail()">Show my email</div>
 		<script src="email.js"></script>
              </div>
-          <div 
-	   id="joke-container">
-	   </div>
+          
           </div>
           <div class="about__content-skills">
             <h3 class="about__content-title">My Skills</h3>
@@ -409,6 +417,7 @@
                 drawTime(ctx, radius);
             }
 </script>
+</canvas>
 		<script>
   // Function to fetch a new joke from the API
   async function fetchJoke() {
