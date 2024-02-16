@@ -42,13 +42,6 @@ body {
   overflow-y: scroll;
   font-family: 'Source Sans Pro', sans-serif; }
 
-#joke-container {
-  font-size: 1.5em; /* Adjust the font size as needed */
-  padding: 20px;   /* Add padding for better visibility */
-  border: 1px solid #ccc; /* Add a border for better separation */
-  margin-top: 20px; /* Add margin to give space above the joke container */
-}
-
 
 a {
   text-decoration: none;
