@@ -390,6 +390,14 @@
         var body = document.body;
         body.classList.toggle('light-theme');
       }
+	    function toggleMessage() {
+        var message = document.getElementById('widget-message');
+        if (message.style.display === 'none') {
+          message.style.display = 'block';
+        } else {
+          message.style.display = 'none';
+        }
+      }
     </script>
 <!-- Digital Clock -->
 	  <div id="digital-clock"></div>
