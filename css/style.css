@@ -155,6 +155,24 @@ textarea {
   max-width: 120rem;
   margin: auto;
   width: 92%; }
+#random-quote-container {
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 2px solid #0062b9;
+  border-radius: 5px;
+  background-color: #fff;
+  text-align: center;
+}
+
+#random-quote-container blockquote {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+#random-quote-container cite {
+  font-size: 1.4rem;
+  color: #777;
+}
 
 .btn {
   background: #fff;
